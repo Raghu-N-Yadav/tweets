@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center">
+<%= form_with model: article do |form| %>
+    <div>
+      <%= form.label :title, class:"text-danger"%><br>
+      <%= form.text_field :title %>
+      <% if article.errors.full_messages_for(:title).any?%>
+        <div class="alert alert-danger mt-2">
+            <% article.errors.full_messages_for(:title).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+      <%end%>
+    </div>
+  
+    <div>
+      <%= form.label :body, class:"text-danger"%><br>
+      <%= form.text_area :body %><br>
+      <%if article.errors.full_messages_for(:body).any?%>
+        <div class="alert alert-danger mt-2">
+            <% article.errors.full_messages_for(:body).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+        </div>
+      <%end%>
+    </div>
+  
+    <div>
+      <%= form.submit "Submit Post", class:"btn btn-primary mt-3"%>
+    </div>
+  <% end %>
+</div>
+  

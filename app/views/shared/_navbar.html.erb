@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%=link_to "Tweets", root_path, class:"navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <%= link_to "Home", root_path, class: "nav-link active"%>
+       
+        <%= link_to "About", about_url, class: "nav-link" %>
+
+        
+        <%= link_to "Read Blogs", read_articles_path, class:"nav-link"%>
+      </div>
+
+      <div class="navbar-nav ms-auto mb-2">
+          <% if Current.user%>
+              <span class="text-primary d-flex align-items-center border rounded fw-bold">
+                <%= link_to Current.user.email, edit_password_path, class:"nav-link"%>
+              </span>
+              <%= button_to "Logout", logout_path, method: :delete, class:"btn btn-outline-secondary ms-2"%>
+          <% else %>
+            <%= link_to "Sign Up", sign_up_url, class: "nav-link" %>
+            <%= link_to "Login", sign_in_path, class: "nav-link" %>
+          <%end%>
+      </div>
+    </div>
+  </div>
+</nav>

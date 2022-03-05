@@ -1,0 +1,28 @@
+<h1 class="text-muted d-flex justify-content-center">Sign Up</h1>
+
+<%= form_with model: @user, url: sign_up_path do |form| %>
+  
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% @user.errors.full_messages.each do |message| %>
+        <div><%= message%></div>
+      <%end%>
+    </div>
+  <%end%>
+  <div class="mb-3">
+    <%= form.label :email, class:"mb-2"%>
+    <%= form.text_field :email, class:"form-control", placeholder: "abc@gmail.com"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :password, class:"mb-2"%>
+    <%= form.password_field :password, class:"form-control", placeholder:"password"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :Confirm_password, class:"mb-2"%>
+    <%= form.password_field :Confirm_password, class:"form-control", placeholder:"password"%>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "Sign Up", class:"btn btn-primary"%>
+  </div>
+
+<% end %>
